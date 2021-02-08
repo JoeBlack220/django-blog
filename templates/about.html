@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block contents %}
+<div class="main-inner page posts-expand">
+
+
+
+
+
+
+
+    <div class="post-block" lang="en">
+        <header class="post-header">
+
+            <h1 class="post-title" itemprop="name headline">about
+            </h1>
+
+            <div class="post-meta-container">
+            </div>
+
+        </header>
+
+
+
+        <div class="post-body">
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+    <script>
+        window.addEventListener('tabs:register', () => {
+            let { activeClass } = CONFIG.comments;
+            if (CONFIG.comments.storage) {
+                activeClass = localStorage.getItem('comments_active') || activeClass;
+            }
+            if (activeClass) {
+                const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+                if (activeTab) {
+                    activeTab.click();
+                }
+            }
+        });
+        if (CONFIG.comments.storage) {
+            window.addEventListener('tabs:click', event => {
+                if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+                const commentClass = event.target.classList[1];
+                localStorage.setItem('comments_active', commentClass);
+            });
+        }
+    </script>
+</div>
+{% endblock %}

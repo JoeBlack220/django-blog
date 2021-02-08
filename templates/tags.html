@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block contents %}
+<div class="main-inner page posts-expand">
+
+
+
+
+
+
+
+    <div class="post-block" lang="en">
+        <header class="post-header">
+
+            <h1 class="post-title" itemprop="name headline">tags
+            </h1>
+
+            <div class="post-meta-container">
+            </div>
+
+        </header>
+
+
+
+        <div class="post-body">
+            <div class="tag-cloud">
+                <div class="tag-cloud-title">
+                    8 tags in total
+                </div>
+                <div class="tag-cloud-tags">
+                    <a href="/tags/blue/" style="font-size: 27px;" class="tag-cloud-8">blue</a> <a href="/tags/fire/"
+                        style="font-size: 12px;" class="tag-cloud-0">fire</a> <a href="/tags/happy/"
+                        style="font-size: 24px;" class="tag-cloud-7">happy</a> <a href="/tags/red/"
+                        style="font-size: 30px;" class="tag-cloud-10">red</a>
+                    <a href="/tags/sad/" style="font-size: 18px;" class="tag-cloud-3">sad</a> <a href="/tags/sniu/"
+                        style="font-size: 15px;" class="tag-cloud-2">sniu</a> <a href="/tags/test/"
+                        style="font-size: 21px;" class="tag-cloud-5">test</a> <a href="/tags/yellow/"
+                        style="font-size: 15px;" class="tag-cloud-2">yellow</a>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+    <script>
+        window.addEventListener('tabs:register', () => {
+            let { activeClass } = CONFIG.comments;
+            if (CONFIG.comments.storage) {
+                activeClass = localStorage.getItem('comments_active') || activeClass;
+            }
+            if (activeClass) {
+                const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+                if (activeTab) {
+                    activeTab.click();
+                }
+            }
+        });
+        if (CONFIG.comments.storage) {
+            window.addEventListener('tabs:click', event => {
+                if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+                const commentClass = event.target.classList[1];
+                localStorage.setItem('comments_active', commentClass);
+            });
+        }
+    </script>
+</div>
+{% endblock %}
