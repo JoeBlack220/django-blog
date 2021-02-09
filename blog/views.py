@@ -25,9 +25,9 @@ class Index(View):
         except PageNotAnInteger:
             page = 1
 
-        p = Paginator(all_articles, 9, request=request)
+        p = Paginator(all_articles, 1, request=request)
         articles = p.page(page)
-
+        print(articles.object_list[0].content)
         return render(request, 'index.html', {
             'all_articles': articles,
         })
