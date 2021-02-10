@@ -8,14 +8,26 @@ def parse_li(html, level):
     for child in li.findChildren(recursive=False):
         if child.name == "a":
             child['class'] = "nav-link"
-            new_tag = soup.new_tag('span')
-            new_tag['class'] = "nav-text"
-            new_tag.string = child.string
-            child.string = ""
-            child.append(new_tag)
+            child.replace_with(parse_a(child.__str__()))
         elif child.name == "ul":
             child.replace_with(parse_ol(child.__str__(), level+1))
     return soup
+
+
+def parse_a(html):
+    soup = BeautifulSoup(html, features="html.parser")
+    a = soup.findChildren(recursive=False)[0]
+    if not len(a.findChildren(recursive=False)):
+        new_tag = soup.new_tag('span')
+        new_tag['class'] = "nav-text"
+        if(a.string):
+            new_tag.string = a.string
+        a.string = ""
+        a.append(new_tag)
+    else:
+        child = a.findChildren(recursive=False)[0]
+        a.replace_with(parse_a(child.__str__()))
+    return a
 
 
 def parse_ol(html, level):

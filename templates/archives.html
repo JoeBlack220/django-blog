@@ -8,193 +8,32 @@
     <div class="post-block">
         <div class="post-content">
             <div class="collection-title">
-                <span class="collection-header">Um..! 23 posts in total. Keep on posting.</span>
+                <span class="collection-header">{{ num }} posts in total. Keep on
+                    posting.</span>
             </div>
 
-
-            <div class="collection-year">
-                <span class="collection-header">2021</span>
-            </div>
+            {% for article in all_articles.object_list %}
 
             <article itemscope itemtype="http://schema.org/Article">
                 <header class="post-header">
                     <div class="post-meta-container">
-                        <time itemprop="dateCreated" datetime="2021-03-06T23:57:20-08:00" content="2021-03-06">
-                            03-06
+                        <time itemprop="dateCreated" datetime="{{ article.add_time }}"
+                            content='{{ article.add_time|date:"SHORT_DATE_FORMAT" }}'>
+                            {{ article.add_time|date:"SHORT_DATE_FORMAT" }}
                         </time>
                     </div>
 
                     <div class="post-title">
-                        <a class="post-title-link" href="/2021/03/06/12/" itemprop="url">
-                            <span itemprop="name">12</span>
+                        <a class="post-title-link" href="/posts/{{ article.slug }}" itemprop="url">
+                            <span itemprop="name">{{ article.title }}</span>
                         </a>
                     </div>
 
 
                 </header>
             </article>
+            {% endfor %}
 
-            <article itemscope itemtype="http://schema.org/Article">
-                <header class="post-header">
-                    <div class="post-meta-container">
-                        <time itemprop="dateCreated" datetime="2021-03-06T23:57:20-08:00" content="2021-03-06">
-                            03-06
-                        </time>
-                    </div>
-
-                    <div class="post-title">
-                        <a class="post-title-link" href="/2021/03/06/18/" itemprop="url">
-                            <span itemprop="name">18</span>
-                        </a>
-                    </div>
-
-
-                </header>
-            </article>
-
-            <article itemscope itemtype="http://schema.org/Article">
-                <header class="post-header">
-                    <div class="post-meta-container">
-                        <time itemprop="dateCreated" datetime="2021-02-06T23:57:20-08:00" content="2021-02-06">
-                            02-06
-                        </time>
-                    </div>
-
-                    <div class="post-title">
-                        <a class="post-title-link" href="/2021/02/06/test/" itemprop="url">
-                            <span itemprop="name">test</span>
-                        </a>
-                    </div>
-
-
-                </header>
-            </article>
-
-            <article itemscope itemtype="http://schema.org/Article">
-                <header class="post-header">
-                    <div class="post-meta-container">
-                        <time itemprop="dateCreated" datetime="2021-02-06T23:57:20-08:00" content="2021-02-06">
-                            02-06
-                        </time>
-                    </div>
-
-                    <div class="post-title">
-                        <a class="post-title-link" href="/2021/02/06/1/" itemprop="url">
-                            <span itemprop="name">1</span>
-                        </a>
-                    </div>
-
-
-                </header>
-            </article>
-
-            <article itemscope itemtype="http://schema.org/Article">
-                <header class="post-header">
-                    <div class="post-meta-container">
-                        <time itemprop="dateCreated" datetime="2021-02-06T23:57:20-08:00" content="2021-02-06">
-                            02-06
-                        </time>
-                    </div>
-
-                    <div class="post-title">
-                        <a class="post-title-link" href="/2021/02/06/2/" itemprop="url">
-                            <span itemprop="name">2</span>
-                        </a>
-                    </div>
-
-
-                </header>
-            </article>
-
-            <article itemscope itemtype="http://schema.org/Article">
-                <header class="post-header">
-                    <div class="post-meta-container">
-                        <time itemprop="dateCreated" datetime="2021-02-06T23:57:20-08:00" content="2021-02-06">
-                            02-06
-                        </time>
-                    </div>
-
-                    <div class="post-title">
-                        <a class="post-title-link" href="/2021/02/06/3/" itemprop="url">
-                            <span itemprop="name">3</span>
-                        </a>
-                    </div>
-
-
-                </header>
-            </article>
-
-            <article itemscope itemtype="http://schema.org/Article">
-                <header class="post-header">
-                    <div class="post-meta-container">
-                        <time itemprop="dateCreated" datetime="2021-02-06T23:57:20-08:00" content="2021-02-06">
-                            02-06
-                        </time>
-                    </div>
-
-                    <div class="post-title">
-                        <a class="post-title-link" href="/2021/02/06/4/" itemprop="url">
-                            <span itemprop="name">4</span>
-                        </a>
-                    </div>
-
-
-                </header>
-            </article>
-
-            <article itemscope itemtype="http://schema.org/Article">
-                <header class="post-header">
-                    <div class="post-meta-container">
-                        <time itemprop="dateCreated" datetime="2021-02-06T23:57:20-08:00" content="2021-02-06">
-                            02-06
-                        </time>
-                    </div>
-
-                    <div class="post-title">
-                        <a class="post-title-link" href="/2021/02/06/5/" itemprop="url">
-                            <span itemprop="name">5</span>
-                        </a>
-                    </div>
-
-
-                </header>
-            </article>
-
-            <article itemscope itemtype="http://schema.org/Article">
-                <header class="post-header">
-                    <div class="post-meta-container">
-                        <time itemprop="dateCreated" datetime="2021-02-06T23:57:20-08:00" content="2021-02-06">
-                            02-06
-                        </time>
-                    </div>
-
-                    <div class="post-title">
-                        <a class="post-title-link" href="/2021/02/06/6/" itemprop="url">
-                            <span itemprop="name">6</span>
-                        </a>
-                    </div>
-
-
-                </header>
-            </article>
-
-            <article itemscope itemtype="http://schema.org/Article">
-                <header class="post-header">
-                    <div class="post-meta-container">
-                        <time itemprop="dateCreated" datetime="2021-02-06T23:57:20-08:00" content="2021-02-06">
-                            02-06
-                        </time>
-                    </div>
-
-                    <div class="post-title">
-                        <a class="post-title-link" href="/2021/02/06/7/" itemprop="url">
-                            <span itemprop="name">7</span>
-                        </a>
-                    </div>
-
-
-                </header>
-            </article>
 
 
         </div>
@@ -203,9 +42,20 @@
 
 
     <nav class="pagination">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a
-            class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next"
-            href="/archives/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+        {% for page in all_articles.pages %}
+        {% if page %}
+        {% ifequal page all_articles.number %}
+        <span class="page-number current">{{ page }}</span>
+        {% else %}
+        <a class="page-number" href="/archives?page={{ page }}">{{ page }}</a>
+        {% endifequal %}
+        {% endif %}
+        {% endfor %}
+        {% if all_articles.has_next %}
+        <a class="extend next" rel="next" href="/archives?{{ all_articles.next_page_number.querystring }}"><i
+                class="fa fa-angle-right" aria-label="Next page"></i></a>
+        {% endif %}
+
     </nav>
 
 

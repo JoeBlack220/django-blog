@@ -20,9 +20,13 @@ from blog import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Index.as_view(), name='index'),
-    path('about/', views.about),
-    path('archives/', views.archives),
-    path('tags/', views.tags),
-    path('categories/', views.categories),
+    path('about/', views.AboutPage.as_view(), name='about'),
+    path('archives/', views.Archives.as_view(), name='archive'),
+    path('tags/', views.Tags.as_view(), name='tags'),
+    path('tags/<str:tag>', views.TagsDetail.as_view(),
+         name='atgs_detail'),
+    path('categories/', views.Categories.as_view(), name='categories'),
+    path('categories/<str:cate>', views.CategoriesDetail.as_view(),
+         name='categories_detail'),
     path('posts/<slug:the_slug>/', views.Detail.as_view(), name='show_post'),
 ]

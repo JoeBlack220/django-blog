@@ -225,6 +225,11 @@
                                         target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
                                 </span>
                                 <span class="links-of-author-item">
+                                    <a href="https://www.linkedin.com/in/yichun-yan-7b11a816b/"
+                                        title="Linkedin → https:&#x2F;&#x2F;github.com&#x2F;JoeBlack220" rel="noopener"
+                                        target="_blank"><i class="fab fa-linkedin fa-fw"></i>Linkedin</a>
+                                </span>
+                                <span class="links-of-author-item">
                                     <a href="/yichunyan1996@gmail.com" title="E-Mail → yichunyan1996@gmail.com"><i
                                             class="fa fa-envelope fa-fw"></i>E-Mail</a>
                                 </span>
@@ -287,16 +292,28 @@
                                     </span>
                                     <span class="post-meta-item-text">Posted on</span>
 
-                                    <time title="Created: 2020-02-06 23:57:20" itemprop="dateCreated datePublished"
-                                        datetime="2020-02-06T23:57:20-08:00">2020-02-06</time>
+                                    <time title="Created: 2020-02-06 {{ article.add_time }}"
+                                        itemprop="dateCreated datePublished" datetime="{{ article.add_time }}">
+                                        {{ article.add_time|date:"SHORT_DATE_FORMAT" }}</time>
                                 </span>
                                 <span class="post-meta-item">
                                     <span class="post-meta-item-icon">
                                         <i class="far fa-calendar-check"></i>
                                     </span>
                                     <span class="post-meta-item-text">Edited on</span>
-                                    <time title="Modified: 2021-02-07 11:39:31" itemprop="dateModified"
-                                        datetime="2021-02-07T11:39:31-08:00">2021-02-07</time>
+                                    <time title="Modified: {{ article.update_time }}" itemprop="dateModified"
+                                        datetime="{{ article.update_time }}">
+                                        {{ article.update_time|date:"SHORT_DATE_FORMAT" }}</time>
+                                </span>
+                                <span class="post-meta-item">
+                                    <span class="post-meta-item-icon">
+                                        <i class="far fa-eye"></i>
+                                    </span>
+                                    <span class="post-meta-item-text">views</span>
+                                    <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                                        <span itemprop="name">
+                                            {{ article.click_count }}</span>
+                                    </span>
                                 </span>
                                 <span class="post-meta-item">
                                     <span class="post-meta-item-icon">
@@ -304,8 +321,9 @@
                                     </span>
                                     <span class="post-meta-item-text">In</span>
                                     <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                                        <a href="/categories/new/" itemprop="url" rel="index"><span
-                                                itemprop="name">new</span></a>
+                                        <a href="/categories/{{ article.category }}" itemprop="url" rel="index"><span
+                                                itemprop="name">
+                                                {{ article.category }}</span></a>
                                     </span>
                                 </span>
 
@@ -319,9 +337,8 @@
 
 
                     <div class="post-body" itemprop="articleBody">
-                        <h1 id="Another-test"><a href="#Another-test" class="headerlink"
-                                title="Another test"></a>Another test</h1>
-                        <p>this is a test</p>
+                        {{ content|safe }}
+
 
                     </div>
 
@@ -331,23 +348,36 @@
 
                     <footer class="post-footer">
                         <div class="post-tags">
-                            <a href="/tags/happy/" rel="tag"># happy</a>
-                            <a href="/tags/red/" rel="tag"># red</a>
+                            {% for tag in article.tag.all %}
+                            <a href="/tags/{{ tag }}" rel="tag"># {{ tag }}</a>
+                            {% endfor %}
                         </div>
 
 
 
                         <div class="post-nav">
+                            {% if prev %}
                             <div class="post-nav-item">
-                                <a href="/2020/02/06/15/" rel="prev" title="15">
-                                    <i class="fa fa-chevron-left"></i> 15
+                                <a href="/posts/{{ prev.slug }}" rel="prev" title="{{ prev.title }}">
+                                    <i class="fa fa-chevron-left"></i> {{ prev.title }}
                                 </a>
                             </div>
+                            {% else %}
                             <div class="post-nav-item">
-                                <a href="/2020/04/06/19/" rel="next" title="19">
-                                    19 <i class="fa fa-chevron-right"></i>
+
+                            </div>
+                            {% endif %}
+                            {% if next %}
+                            <div class="post-nav-item">
+                                <a href="/posts/{{ next.slug }}" rel="prev" title="{{ next.title }}">
+                                    <i class="fa fa-chevron-right"></i> {{ next.title }}
                                 </a>
                             </div>
+                            {% else %}
+                            <div class="post-nav-item">
+
+                            </div>
+                            {% endif %}
                         </div>
                     </footer>
                 </article>

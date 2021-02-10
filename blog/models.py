@@ -86,3 +86,10 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class About(models.Model):
+    """
+    About
+    """
+    content = MDTextField(verbose_name='article content')

@@ -24,7 +24,7 @@
             </span>
             <header class="post-header">
                 <h2 class="post-title" itemprop="name headline">
-                    <a href="/2021/02/06/test/" class="post-title-link" itemprop="url">{{ article.title }}</a>
+                    <a href="/posts/{{ article.slug }}" class="post-title-link" itemprop="url">{{ article.title }}</a>
                 </h2>
 
                 <div class="post-meta-container">
@@ -45,7 +45,7 @@
                             </span>
                             <span class="post-meta-item-text">Edited on</span>
                             <time title="Modified: {{ article.update_time }}" itemprop="dateModified"
-                                datetime="2021-02-07T09:47:16-08:00">
+                                datetime="{{ article.update_time }}">
                                 {{ article.update_time|date:"SHORT_DATE_FORMAT" }}
                             </time>
                         </span>

@@ -11,7 +11,7 @@
     <div class="post-block" lang="en">
         <header class="post-header">
 
-            <h1 class="post-title" itemprop="name headline">tags
+            <h1 class="post-title" itemprop="name headline">Tags
             </h1>
 
             <div class="post-meta-container">
@@ -24,17 +24,12 @@
         <div class="post-body">
             <div class="tag-cloud">
                 <div class="tag-cloud-title">
-                    8 tags in total
+                    {{ tags|length }} tags in total
                 </div>
                 <div class="tag-cloud-tags">
-                    <a href="/tags/blue/" style="font-size: 27px;" class="tag-cloud-8">blue</a> <a href="/tags/fire/"
-                        style="font-size: 12px;" class="tag-cloud-0">fire</a> <a href="/tags/happy/"
-                        style="font-size: 24px;" class="tag-cloud-7">happy</a> <a href="/tags/red/"
-                        style="font-size: 30px;" class="tag-cloud-10">red</a>
-                    <a href="/tags/sad/" style="font-size: 18px;" class="tag-cloud-3">sad</a> <a href="/tags/sniu/"
-                        style="font-size: 15px;" class="tag-cloud-2">sniu</a> <a href="/tags/test/"
-                        style="font-size: 21px;" class="tag-cloud-5">test</a> <a href="/tags/yellow/"
-                        style="font-size: 15px;" class="tag-cloud-2">yellow</a>
+                    {% for tag in tags %}
+                    <a href="/tags/{{ tag.name }}" style="font-size: 20px;" class="tag-cloud-8">{{ tag.name }}</a>
+                    {% endfor %}
                 </div>
             </div>
 
