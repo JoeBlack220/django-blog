@@ -24,4 +24,5 @@ urlpatterns = [
     path('archives/', views.archives),
     path('tags/', views.tags),
     path('categories/', views.categories),
+    path('posts/<slug:the_slug>/', views.Detail.as_view(), name='show_post'),
 ]

@@ -70,6 +70,7 @@ class Article(models.Model):
         auto_now=True, verbose_name='update time')
     category = models.ForeignKey(
         Category, blank=True, null=True, verbose_name='category names', on_delete=models.CASCADE)
+    slug = models.SlugField(unique=True)
     tag = models.ManyToManyField(Tag, verbose_name='tag names')
 
     def viewed(self):

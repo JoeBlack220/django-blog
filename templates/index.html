@@ -94,12 +94,12 @@
         {% ifequal page all_articles.number %}
         <span class="page-number current">{{ page }}</span>
         {% else %}
-        <a class="page-number" href="/page/{{ page }}/">{{ page }}</a>
+        <a class="page-number" href="/?page={{ page }}">{{ page }}</a>
         {% endifequal %}
         {% endif %}
         {% endfor %}
         {% if all_articles.has_next %}
-        <a class="extend next" rel="next" href="/page/{{ all_articles.next_page_number.querystring }}/"><i
+        <a class="extend next" rel="next" href="/?{{ all_articles.next_page_number.querystring }}"><i
                 class="fa fa-angle-right" aria-label="Next page"></i></a>
         {% endif %}
 
