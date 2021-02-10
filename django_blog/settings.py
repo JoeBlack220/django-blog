@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'o5na3e*0m04%p!8p(hvg(1@=(oilp-e7i#0^ki*ybf3a&2!wze'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["www.yichuny.page"]
 
 
 # Application definition
@@ -122,7 +122,7 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = ''
-STATICFILES_DIRS = [(os.path.join(BASE_DIR, 'static'))]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = [(os.path.join(BASE_DIR, 'static'))]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/media/'
