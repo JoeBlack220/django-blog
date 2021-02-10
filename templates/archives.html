@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block contents %}
+<div class="main-inner archive posts-collapse">
+
+
+
+
+    <div class="post-block">
+        <div class="post-content">
+            <div class="collection-title">
+                <span class="collection-header">{{ num }} posts in total. Keep on
+                    posting.</span>
+            </div>
+
+            {% for article in all_articles.object_list %}
+
+            <article itemscope itemtype="http://schema.org/Article">
+                <header class="post-header">
+                    <div class="post-meta-container">
+                        <time itemprop="dateCreated" datetime="{{ article.add_time }}"
+                            content='{{ article.add_time|date:"SHORT_DATE_FORMAT" }}'>
+                            {{ article.add_time|date:"SHORT_DATE_FORMAT" }}
+                        </time>
+                    </div>
+
+                    <div class="post-title">
+                        <a class="post-title-link" href="/posts/{{ article.slug }}" itemprop="url">
+                            <span itemprop="name">{{ article.title }}</span>
+                        </a>
+                    </div>
+
+
+                </header>
+            </article>
+            {% endfor %}
+
+
+
+        </div>
+    </div>
+
+
+
+    <nav class="pagination">
+        {% for page in all_articles.pages %}
+        {% if page %}
+        {% ifequal page all_articles.number %}
+        <span class="page-number current">{{ page }}</span>
+        {% else %}
+        <a class="page-number" href="/archives?page={{ page }}">{{ page }}</a>
+        {% endifequal %}
+        {% endif %}
+        {% endfor %}
+        {% if all_articles.has_next %}
+        <a class="extend next" rel="next" href="/archives?{{ all_articles.next_page_number.querystring }}"><i
+                class="fa fa-angle-right" aria-label="Next page"></i></a>
+        {% endif %}
+
+    </nav>
+
+
+    <script>
+        window.addEventListener('tabs:register', () => {
+            let { activeClass } = CONFIG.comments;
+            if (CONFIG.comments.storage) {
+                activeClass = localStorage.getItem('comments_active') || activeClass;
+            }
+            if (activeClass) {
+                const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+                if (activeTab) {
+                    activeTab.click();
+                }
+            }
+        });
+        if (CONFIG.comments.storage) {
+            window.addEventListener('tabs:click', event => {
+                if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+                const commentClass = event.target.classList[1];
+                localStorage.setItem('comments_active', commentClass);
+            });
+        }
+    </script>
+</div>
+{% endblock %}
