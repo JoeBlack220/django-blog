@@ -52,7 +52,8 @@ class Detail(View):
 
         article.viewed()
 
-        md = markdown.Markdown(extensions=['toc', 'extra', 'codehilite'])
+        md = markdown.Markdown(
+            extensions=['toc', 'extra', 'codehilite', 'header-ids'])
         content = md.convert(article.content)
 
         return render(request, 'detail.html', {
@@ -85,9 +86,9 @@ class AboutPage(View):
     def get(self, request):
         about = About.objects.all()[0]
 
-        md = markdown2.Markdown(extras=["toc", "header-ids"])
+        md = markdown.Markdown(
+            extensions=['toc', 'extra', 'codehilite', 'header-ids'])
         content = md.convert(about.content)
-
         return render(request, 'about.html', {
             'content': content
         })
