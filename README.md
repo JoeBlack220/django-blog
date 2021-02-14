@@ -7,6 +7,8 @@
 - Install simpleui: `pip3 install django-simpleui`
 - Install pillow: `pip3 install pillow`
 - Install beautiful soup: `pip3 install beautifulsoup4`
+- Install code hilighting: `pip install Pygments`
+
 ## Starting the Server
 `python3 manage.py runserver`
 ## After Making Changes to DB Models
