@@ -2,7 +2,7 @@
 ## Dependencies:
 - Install django: `pip3 install Django`
 - Install pagination plugin: `pip3 install django-pure-pagination`
-- Install markdown parser: `pip3 install markdown2`
+- Install markdown parser: `pip3 install markdown`
 - Install markdown editor: `pip3 install django-mdeditor`
 - Install simpleui: `pip3 install django-simpleui`
 - Install pillow: `pip3 install pillow`

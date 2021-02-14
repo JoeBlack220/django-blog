@@ -1,6 +1,6 @@
 import random
 import datetime
-import markdown2
+import markdown
 from operator import itemgetter
 from django.shortcuts import render
 from django.views.generic.base import View
@@ -51,13 +51,14 @@ class Detail(View):
                     next_a = all_articles[i+1]
 
         article.viewed()
-        md = markdown2.Markdown(extras=["toc", "header-ids"])
+
+        md = markdown.Markdown(extensions=['toc', 'extra', 'codehilite'])
         content = md.convert(article.content)
-        # print(content)
+
         return render(request, 'detail.html', {
             'article': article,
             'content': content,
-            'toc': convert_toc(content.toc_html),
+            'toc': convert_toc(md.toc),
             'prev': prev_a,
             'next': next_a,
         })
